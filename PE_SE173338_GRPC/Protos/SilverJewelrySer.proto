@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option csharp_namespace = "PE_SE173338_GRPC.Protos";
+
+service SilverJewelryService {
+  rpc GetSilverJewelryById (SilverJewelryRequest) returns (SilverJewelryResponse);
+  rpc GetAllSilverJewelry (SilverJewelryRequest) returns (SilverJewelryListResponse);
+  rpc CreateSilverJewelry (SilverJewelryRequest) returns (SilverJewelryCreateResponse);
+  rpc UpdateSilverJewelry (SilverJewelryRequest) returns (SilverJewelryCreateResponse);
+  rpc DeleteSilverJewelry (SilverJewelryRequest) returns (DeleteSilverJewelryResponse);
+}
+
+
+message SilverJewelryRequest {
+  string id = 1;  
+ string name = 2;
+  string description = 3;
+  double  price = 4;
+  double metal_weight = 5;
+  int32 production_year = 6;
+  string created_date = 7;
+  string category_id = 8;
+  
+}
+
+message SilverJewelryResponse {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double  price = 4;
+  double metal_weight = 5;
+  int32 production_year = 6;
+  string created_date = 7;  
+  string category_name = 8;
+}
+
+message SilverJewelryListResponse {
+  repeated SilverJewelryResponse items = 1;
+}
+
+
+message DeleteSilverJewelryResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+
+message SilverJewelryCreateResponse {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double  price = 4;
+  double metal_weight = 5;
+  int32 production_year = 6;
+  string created_date = 7;  
+  string category_id = 8;
+
+    bool success = 9;
+    string message = 10;
+}
+message Empty {}
+
